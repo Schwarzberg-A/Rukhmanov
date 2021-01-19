@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <!-- <link rel="stylesheet" href="./dist/bundle.css"> -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <title>Schwarzberg</title>
+</head>
+
+<body>
+
+  <header class="header container">
+
+    <nav class="header__nav">
+      <ul class="header__nav-list">
+        <li class="header__nav-item">
+          <a class="header__nav-link nav-link-active" href="#">
+            Home
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a class="header__nav-link" href="#about">
+            About me
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a class="header__nav-link" href="#skills">
+            Skills
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a class="header__nav-link" href="#portfolio">
+            Portfolio
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a class="header__nav-link" href="#contacts">
+            Contacts
+          </a>
+        </li>
+      </ul>
+      <span class="header__nav-cross"></span>
+      <a href="#" class="header__nav-lang">RU <span class="eng">| ENG</span></a>
+    </nav>
+
+  </header>
+
+
+  <main class="container main">
+
+    <section class="header-wrapper">
+      <a href="#" class="header__logo-link">
+        <img src="src/img/sberg.png" class="header__logo-img">
+      </a>
+      <h1 class="person-name">
+        Aleksei Rukhmanov
+      </h1>
+      <a class="nav-burger">
+      </a>
+      <div class="person">
+        <h2 class="person-profession">
+          Frontend-developer
+        </h2>
+        <p class="person-description">
+          28 years old, Nizhny Novgorod
+        </p>
+      </div>
+    </section>
+
+    <section class="main-foto">
+      <img class="main-foto__img" src="src/img/main-mobile.jpg" alt="главное фото">
+    </section>
+    <section class="about" id="about">
+      <h3 class="about-title">
+        About me
+      </h3>
+      <ul class="about-list">
+        <li class="about-item">
+          Hi, I'm Aleks – Frontend-developer from Nizahny Novgorog. I'm interested in web-development and everything
+          connected with it.
+        </li>
+        <li class="about-item">
+          I'm studying at courses
+          "Frontend-development"
+          in online-university "SkillBox".
+        </li>
+        <li class="about-item">
+          Ready to implement excellent projects with wonderful people.
+        </li>
+      </ul>
+    </section>
+    <section class="skills" id="skills">
+      <h3 class="Skills-title">
+        Skills
+      </h3>
+      <ul class="skill-list">
+        <li class="skill-item">
+          <img src="src/img/skills/js.png" alt="js">
+        </li>
+        <li class="skill-item">
+          <img src="src/img/skills/html.png" alt='html'>
+        </li>
+        <li class="skill-item">
+          <img src="src/img/skills/css.png" alt="css">
+        </li>
+        <li class="skill-item">
+          <img src="src/img/skills/webpack.png" alt="webpack">
+        </li>
+        <li class="skill-item">
+          <img src="src/img/skills/sass.png" alt="sass">
+        </li>
+        <li class="skill-item">
+          <img src="src/img/skills/boot.png" alt="bootstrap">
+        </li>
+        <li class="skill-item">
+          <img src="src/img/skills/jquery.png" alt="jquery">
+        </li>
+        <li class="skill-item">
+          <img src="src/img/skills/figma.png" alt="figma">
+        </li>
+        <li class="skill-item">
+          <img src="src/img/skills/vue.png" alt="vue">
+        </li>
+      </ul>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+      <h3 class="portfolio-title">
+        Portfolio
+      </h3>
+      <ul class="portfolio-list">
+        <li class="portfolio-item">
+          <a target="_blank" class="portfolio-link" href="http://euqlide.tmweb.ru/">
+            <picture class="portfolio-picture" data-pic="1">
+              <source class="portfolio-source"
+                srcset="src/img/myworks/euqlide.jpg 1x, src/img/myworks/euqlide@2x.jpg 2x">
+              <img class="portfolio-img" src="src/img/myworks/euqlide.jpg" alt="example of work completion">
+            </picture>
+          </a>
+
+        </li>
+        <li class="portfolio-item your-site">
+          <a href="" class="your-site__link">place for your site</a>
+        </li>
+      </ul>
+      </iframe>
+    </section>
+
+
+  </main>
+
+
+  <footer class="container footer">
+    <section class="footer-contacts"  id="contacts">
+      <h3 class="footer-contacts__title">
+        Contacts
+      </h3>
+      <a class="footer-contacts__email" target="_blank" href="mailto:aleksei.rukhmanov@gmx.de">
+        send me E-Mail
+      </a>
+      <p class="footer-contacts__whrite-me">
+        or
+        whrite me on
+      </p>
+      <ul class="footer-contacts__list">
+        <li class="footer-contacts__list-item">
+          <a class="list-item-link fb" target="_blank"
+            href="https://www.facebook.com/profile.php?id=100022285489839"></a>
+        </li>
+        <li class="footer-contacts__list-item">
+          <a class="list-item-link insta" target="_blank" href="https://www.instagram.com/aleksei.rukhmanov/"></a>
+        </li>
+        <li class="footer-contacts__list-item">
+          <a class="list-item-link in" target="_blank"
+            href="https://www.linkedin.com/in/aleksei-rukhmanov-77aba7203"></a>
+        </li>
+      </ul>
+    </section>
+  </footer>
+
+  <script src="dist/bundle.js"></script>
+  <script src="src\js\script.js"></script>
+</body>
+
+</html>
