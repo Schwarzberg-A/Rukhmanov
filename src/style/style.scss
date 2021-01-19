@@ -57,6 +57,7 @@ section {
 .container {
   margin: 0 auto;
   min-width: 319px;
+  max-width: 380px;
   background-color: white;
   padding-left: 30px;
   padding-right: 30px;
@@ -137,26 +138,77 @@ button:hover {
 
 
 .header {
-  position: relative;
   display: grid;
+  position: relative;
   grid-template-columns: 1fr;
   grid-auto-flow: dense;
-  .header__nav {
-    position: relative;
-    padding-top: 30px;
-    padding-bottom: 120px;
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-content: start;
-    .header__nav-cross {
-      position: absolute;
-      top: 30px;
-      right: 0;
-      width: 18%;
-      height: 60px;
+
+  .burger{
+    position: absolute;
+    z-index: 2;
+    top: 45px;
+    right: 35px;
+    width: 28px;
+    height: 28px;
+    transition: background-image 150ms ease-in-out;
+    @include backgr("menu/burger1.svg");
+    background-size: 22px 22px;
+    &.open {
       @include backgr("menu/x.svg");
       background-size: 22px 22px;
     }
+  }
+
+  .header-wrapper {
+    display: grid;
+    grid-template-areas: 
+    'logo person-name burger'
+    'logo person .';
+    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    padding-top: 55px;
+    padding-bottom: 35px;
+    font-size: 15px;
+  
+    .header__logo-link {
+      grid-area: logo;
+      grid-row-start: 1;
+      grid-row-end: 4;
+      align-self: center;
+      text-align: start;
+      margin-bottom: -5px;
+      .header__logo-img {
+        width: 65px;
+        object-fit: contain;
+      }
+    }
+  
+    .person-name {
+      grid-area: person-name;
+      max-width: 185px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      font-size: 27px;
+    }
+  
+    .person {
+      grid-area: person;
+      font-size: 17px;
+      .person-profession {
+        font-size: 17px;
+      }
+    }
+  }
+
+
+  .header__nav {
+    display: none;
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 120px;
+    grid-template-columns: 1fr;
+    justify-content: start;
+
     .header__nav-lang {
       .eng {
         color: black;
@@ -190,54 +242,12 @@ button:hover {
   }
 }
 
-.header-wrapper {
-  display: grid;
-  grid-template-areas: 
-  'logo person-name burger'
-  'logo person .';
-  grid-template-columns: 1fr 6fr 1fr;
-  grid-template-rows: 2fr 1fr;
-  padding-top: 55px;
-  padding-bottom: 35px;
-  font-size: 15px;
+.menu-open {
+  display: grid !important;
+}
 
-  .header__logo-link {
-    grid-area: logo;
-    grid-row-start: 1;
-    grid-row-end: 4;
-    align-self: center;
-    text-align: start;
-    margin-bottom: -5px;
-    .header__logo-img {
-      width: 65px;
-      object-fit: contain;
-    }
-  }
-
-  .person-name {
-    grid-area: person-name;
-    max-width: 185px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    font-size: 27px;
-  }
-
-  .nav-burger {
-    grid-area: burger;
-    display: block;
-    width: 28px;
-    height: 28px;
-    @include backgr('menu/burger1.svg');
-    justify-self: end;
-  }
-
-  .person {
-    grid-area: person;
-    font-size: 17px;
-    .person-profession {
-      font-size: 17px;
-    }
-  }
+.menu-close {
+  display: none !important;
 }
 
 //=============== main ==========================-------->
@@ -250,12 +260,20 @@ button:hover {
 
   .main-foto {
     max-width: 280px;
+    padding-top: 40px;
     padding-bottom: 70px;
     .main-foto__img {
-      width: 100%;
-      border-radius: 5px;
+      margin-left: 15px;
+      width: 30%;
+      transition: width 300ms ease-in-out;
+      border-radius: 50px;
       object-fit: contain;
-    } 
+      cursor: pointer;
+      &.full {
+        width: 80% !important;
+        border-radius: 8px;
+      } 
+    }
   }
 
   .about {
@@ -276,15 +294,43 @@ button:hover {
       grid-template-columns: 1fr;
       grid-auto-rows: 1fr;
       .skill-item {
+        position: relative;
+        display: flex;
         width: 100%;
         text-align: center;
+        white-space: nowrap;
+        transition: margin 600ms ease-in-out;
         &:not(:last-child) {
           padding-bottom: 15px;
         }
         img {
+          margin: auto;
           width: auto;
           max-width: 100px;
           height: 60px;
+        }
+        span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          display: inline-block;
+          height: 100%;
+          vertical-align: middle;
+          color: #828282;
+          font-size: 16px;
+          font-weight: bold;
+          white-space: nowrap;
+          overflow: hidden;
+          opacity: 0;
+          transition:  opacity 600ms ease-in-out;
+          &.toLeft {
+            span {
+              opacity: 1;
+            }
+            img {
+              margin-left: 0;
+            }
+          }
         }
       }
     }
@@ -301,6 +347,7 @@ button:hover {
       .portfolio-item {
         padding: 7px;
         width: 100%;
+
         text-align: center;
         border: 1px solid rgb(241, 227, 227);
         border-radius: 8px;
@@ -324,6 +371,17 @@ button:hover {
       }
     }
   }
+}
+
+.arrow {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  @include backgr("skills/next.png");
 }
 
 //=============== footer ==========================-------->

@@ -34,6 +34,7 @@ section {
 .container {
   margin: 0 auto;
   min-width: 319px;
+  max-width: 380px;
   background-color: white;
   padding-left: 30px;
   padding-right: 30px;
@@ -102,31 +103,83 @@ button:hover {
 }
 
 .header {
-  position: relative;
   display: grid;
+  position: relative;
   grid-template-columns: 1fr;
   grid-auto-flow: dense;
 }
-.header .header__nav {
-  position: relative;
-  padding-top: 30px;
-  padding-bottom: 120px;
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: start;
-}
-.header .header__nav .header__nav-cross {
+.header .burger {
   position: absolute;
-  top: 30px;
-  right: 0;
-  width: 18%;
-  height: 60px;
+  z-index: 2;
+  top: 45px;
+  right: 35px;
+  width: 28px;
+  height: 28px;
+  transition: background-image 150ms ease-in-out;
+  display: inline-block;
+  background-image: url("../src/img/menu/burger1.svg");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+}
+.header .burger.open {
   display: inline-block;
   background-image: url("../src/img/menu/x.svg");
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
   background-size: 22px 22px;
+}
+.header .header-wrapper {
+  display: grid;
+  grid-template-areas: "logo person-name burger" "logo person .";
+  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  padding-top: 55px;
+  padding-bottom: 35px;
+  font-size: 15px;
+}
+.header .header-wrapper .header__logo-link {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: logo;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  align-self: center;
+  text-align: start;
+  margin-bottom: -5px;
+}
+.header .header-wrapper .header__logo-link .header__logo-img {
+  width: 65px;
+  object-fit: contain;
+}
+.header .header-wrapper .person-name {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: person-name;
+  max-width: 185px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 27px;
+}
+.header .header-wrapper .person {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: person;
+  font-size: 17px;
+}
+.header .header-wrapper .person .person-profession {
+  font-size: 17px;
+}
+.header .header__nav {
+  display: none;
+  position: relative;
+  padding-top: 30px;
+  padding-bottom: 120px;
+  grid-template-columns: 1fr;
+  justify-content: start;
 }
 .header .header__nav .header__nav-lang {
   font-size: 25px;
@@ -155,61 +208,12 @@ button:hover {
   color: black;
 }
 
-.header-wrapper {
-  display: grid;
-  grid-template-areas: "logo person-name burger" "logo person .";
-  grid-template-columns: 1fr 6fr 1fr;
-  grid-template-rows: 2fr 1fr;
-  padding-top: 55px;
-  padding-bottom: 35px;
-  font-size: 15px;
+.menu-open {
+  display: grid !important;
 }
-.header-wrapper .header__logo-link {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 1;
-  grid-area: logo;
-  grid-row-start: 1;
-  grid-row-end: 4;
-  align-self: center;
-  text-align: start;
-  margin-bottom: -5px;
-}
-.header-wrapper .header__logo-link .header__logo-img {
-  width: 65px;
-  object-fit: contain;
-}
-.header-wrapper .person-name {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: person-name;
-  max-width: 185px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: 27px;
-}
-.header-wrapper .nav-burger {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
-  grid-area: burger;
-  display: block;
-  width: 28px;
-  height: 28px;
-  display: inline-block;
-  background-image: url("../src/img/menu/burger1.svg");
-  background-position: center center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  justify-self: end;
-}
-.header-wrapper .person {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
-  grid-area: person;
-  font-size: 17px;
-}
-.header-wrapper .person .person-profession {
-  font-size: 17px;
+
+.menu-close {
+  display: none !important;
 }
 
 .main {
@@ -219,12 +223,20 @@ button:hover {
 }
 .main .main-foto {
   max-width: 280px;
+  padding-top: 40px;
   padding-bottom: 70px;
 }
 .main .main-foto .main-foto__img {
-  width: 100%;
-  border-radius: 5px;
+  margin-left: 15px;
+  width: 30%;
+  transition: width 300ms ease-in-out;
+  border-radius: 50px;
   object-fit: contain;
+  cursor: pointer;
+}
+.main .main-foto .main-foto__img.full {
+  width: 80% !important;
+  border-radius: 8px;
 }
 .main .about .about-list .about-item {
   text-align: center;
@@ -239,16 +251,42 @@ button:hover {
   grid-auto-rows: 1fr;
 }
 .main .skills .skill-list .skill-item {
+  position: relative;
+  display: flex;
   width: 100%;
   text-align: center;
+  white-space: nowrap;
+  transition: margin 600ms ease-in-out;
 }
 .main .skills .skill-list .skill-item:not(:last-child) {
   padding-bottom: 15px;
 }
 .main .skills .skill-list .skill-item img {
+  margin: auto;
   width: auto;
   max-width: 100px;
   height: 60px;
+}
+.main .skills .skill-list .skill-item span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  color: #828282;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 600ms ease-in-out;
+}
+.main .skills .skill-list .skill-item span.toLeft span {
+  opacity: 1;
+}
+.main .skills .skill-list .skill-item span.toLeft img {
+  margin-left: 0;
 }
 .main .portfolio {
   display: grid;
@@ -283,6 +321,21 @@ button:hover {
 }
 .main .portfolio .portfolio-list .portfolio-item .portfolio-img {
   width: 100%;
+}
+
+.arrow {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  display: inline-block;
+  background-image: url("../src/img/skills/next.png");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .footer {
