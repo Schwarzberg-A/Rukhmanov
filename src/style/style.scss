@@ -391,6 +391,46 @@ button:hover {
     }
   }
 
+  .lang {
+    .lang-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr; 
+      text-align: center;
+      .lang-item {   
+        img {
+          transition: filter 300ms ease-in-out;
+          // transition-property: color;
+          // transition-property: filter;
+          // transition-timing-function: ease-in-out;
+          // transition-duration: 500ms;
+          width: 100%;
+          height: 100%;
+          filter: grayscale(.5);
+        }
+        span {
+          transition: color 300ms ease-in-out;
+        }
+      }
+      &.lang-effect {
+        .lang-item {
+          img {
+            filter: grayscale(0);  
+          }
+          .ru {
+            color: rgb(5, 75, 5);
+          }
+          .de {
+            color: rgb(8, 223, 72);
+          }
+          .en {
+            color: rgb(215, 230, 14);
+          }
+       }
+      } 
+    }
+  }
+
+
   // @keyframes skillvisi {
   //   0% {
   //     opacity: 0;
@@ -482,14 +522,59 @@ button:hover {
 }
 
 //=============== footer ==========================-------->
+
+@keyframes gradi {
+  0%{
+    background-position: 0;
+  }
+  100%{
+    background-position: 200%;
+  }
+}
+
 .footer {
   display: grid;
   grid-template-columns: 1fr;
-  justify-content: center;
+  justify-content: center; 
   .footer-contacts {
+    z-index: 1;
+    position: relative;
     display: grid;
     grid-template-columns: 1fr;
     justify-content: center;
+    background-color: inherit;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    &::after {
+      content: "";
+      z-index: -2;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      border-radius: 8px;
+      background-size: 400% 400%;
+      background-position: 0%;
+      background-image: linear-gradient(45deg,#f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+        animation: gradi 10s linear reverse infinite;
+
+    }
+    &::before {
+      content: "";
+      z-index: -1;
+      display: block;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      bottom: 5px;
+      right: 5px;
+      border-radius: 8px;
+      background-color: inherit;
+    }
     .footer-contacts__email {  
       display: inline-block;
       padding: 15px 25px 15px 25px;
@@ -498,13 +583,13 @@ button:hover {
       margin-bottom: 45px;
     }
     .footer-contacts__whrite-me {
+      margin-bottom: 25px;
       text-align: center;
       color: rgb(221, 204, 204);
-      margin-bottom: 25px;
     }
     .footer-contacts__list {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       justify-content: center;
       .footer-contacts__list-item {
         text-align: center;
@@ -519,6 +604,10 @@ button:hover {
           }
           &.in {
             @include backgr('social/linkedin.png');
+          }
+          &.git {
+            @include backgr('social/git.png');
+            border-radius: 8px solid black;
           }
         }
       }

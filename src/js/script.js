@@ -8,20 +8,27 @@ const persdata = document.querySelector('.header-wrapper');
 const arrow = document.querySelector('.arrow');
 burger.addEventListener('click', () => {
   nav.classList.toggle('menu');
-
-  // nav.classList.toggle('menu-open');
-  // nav.classList.toggle('menu-close');
   burger.classList.toggle('open');
 })
+
+//=============== nav ==========================-------->
+const skills = document.querySelector('.skills');
+const skillsTitle = document.querySelector('.nav-skills');
+skillsTitle.addEventListener('click', () => {
+  // alert(123);
+  skills.scrollIntoView();
+})
+
 
 //=============== foto ==========================-------->
 const foto = document.querySelector('.main-foto__img');
 foto.addEventListener('click', () => {
   foto.classList.toggle('full');
 })
-//=============== skills ==========================-------->
+//=============== skills & lang ==========================-------->
 const skillList = document.querySelector('.skill-list');
 const skillItems = document.querySelectorAll('.skill-item');
+const lang = document.querySelector('.lang-list');
 
 function getCoordsStart (elem) {
   let box = elem.getBoundingClientRect();
@@ -35,10 +42,14 @@ function getCoordsEnd (elem) {
 let extraPX = 35;
 
 window.addEventListener('scroll', () => {
-  const skillListYCoordsStart = getCoordsStart (skillList); 
-  const skillListYCoordsEnd = getCoordsEnd (skillList); 
+  const skillListYCoordsStart = getCoordsStart(skillList); 
+  const skillListYCoordsEnd = getCoordsEnd(skillList); 
+  const langStart = getCoordsStart(lang); 
+  const langEnd = getCoordsEnd(lang); 
   const VHcenter = document.documentElement.clientHeight / 2;
   let scroll = window.scrollY + VHcenter;
+
+
   if ((scroll > skillListYCoordsStart) && ((scroll < skillListYCoordsEnd))) {
     arrow.style.opacity = .3;
   } else {
@@ -57,8 +68,20 @@ window.addEventListener('scroll', () => {
     }
   }
 
+  if ((scroll > (langStart - extraPX)) && ((scroll < (langEnd + extraPX)))) {
+    lang.classList.add('lang-effect');
+  } else {
+    lang.classList.remove('lang-effect');
+  }
+
 })
 
+//=============== contacts ==========================-------->
+// const contact = document.querySelector('.your-site__link');
+// const contacts = document.querySelector('.footer-contacts');
 
-//=============== skills ==========================-------->
+// contact.addEventListener('click', () => {
+//   contacts.classList.toggle('grad');
+//   contact.addEventListener('transitionend', al, false)
+// })
 

@@ -336,6 +336,32 @@ button:hover {
 .main .skills .skill-list .skill-item span small {
   color: #a79797;
 }
+.main .lang .lang-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+}
+.main .lang .lang-list .lang-item img {
+  transition: filter 300ms ease-in-out;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(0.5);
+}
+.main .lang .lang-list .lang-item span {
+  transition: color 300ms ease-in-out;
+}
+.main .lang .lang-list.lang-effect .lang-item img {
+  filter: grayscale(0);
+}
+.main .lang .lang-list.lang-effect .lang-item .ru {
+  color: #054b05;
+}
+.main .lang .lang-list.lang-effect .lang-item .de {
+  color: #08df48;
+}
+.main .lang .lang-list.lang-effect .lang-item .en {
+  color: #d7e60e;
+}
 .main .visi {
   opacity: 1 !important;
 }
@@ -393,15 +419,57 @@ button:hover {
   background-repeat: no-repeat;
 }
 
+@keyframes gradi {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
 .footer {
   display: grid;
   grid-template-columns: 1fr;
   justify-content: center;
 }
 .footer .footer-contacts {
+  z-index: 1;
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   justify-content: center;
+  background-color: inherit;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+.footer .footer-contacts::after {
+  content: "";
+  z-index: -2;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 8px;
+  background-size: 400% 400%;
+  background-position: 0%;
+  background-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  animation: gradi 10s linear reverse infinite;
+}
+.footer .footer-contacts::before {
+  content: "";
+  z-index: -1;
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  bottom: 5px;
+  right: 5px;
+  border-radius: 8px;
+  background-color: inherit;
 }
 .footer .footer-contacts .footer-contacts__email {
   display: inline-block;
@@ -411,13 +479,13 @@ button:hover {
   margin-bottom: 45px;
 }
 .footer .footer-contacts .footer-contacts__whrite-me {
+  margin-bottom: 25px;
   text-align: center;
   color: #ddcccc;
-  margin-bottom: 25px;
 }
 .footer .footer-contacts .footer-contacts__list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: center;
 }
 .footer .footer-contacts .footer-contacts__list .footer-contacts__list-item {
@@ -447,4 +515,12 @@ button:hover {
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
+}
+.footer .footer-contacts .footer-contacts__list .footer-contacts__list-item .list-item-link.git {
+  display: inline-block;
+  background-image: url("../src/img/social/git.png");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 8px solid black;
 }
