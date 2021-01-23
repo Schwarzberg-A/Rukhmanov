@@ -12,19 +12,44 @@ burger.addEventListener('click', () => {
 })
 
 //=============== nav ==========================-------->
-const skills = document.querySelector('.skills');
-const skillsTitle = document.querySelector('.nav-skills');
-skillsTitle.addEventListener('click', () => {
-  // alert(123);
-  skills.scrollIntoView();
-})
+const links = document.querySelectorAll('.header__nav a[href], .your-site__link');
+
+for (let link of links) {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    let id = link.getAttribute('href');
+    document.querySelector(id).scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    })
+  })
+}
+
+// const skillsTitle = document.querySelector('.nav-skills');
+// skillsTitle.addEventListener('click', () => {
+//   skills.scrollIntoView();
+// })
 
 
 //=============== foto ==========================-------->
 const foto = document.querySelector('.main-foto__img');
+const fotoWrapp = document.querySelector('.foto-wrapp');
+
 foto.addEventListener('click', () => {
-  foto.classList.toggle('full');
+  fotoWrapp.classList.toggle('full');
+  foto.classList.toggle('full-foto');
 })
+
+
+//=============== about ==========================-------->
+
+const aboutMore  = document.querySelector('.about-more');
+const aboutCotent  = document.querySelector('.about-cotent');
+
+aboutMore.addEventListener('click', () => {
+  aboutCotent.classList.toggle('heigth');
+})
+
 //=============== skills & lang ==========================-------->
 const skillList = document.querySelector('.skill-list');
 const skillItems = document.querySelectorAll('.skill-item');

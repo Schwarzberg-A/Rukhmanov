@@ -322,27 +322,93 @@ button:hover {
     max-width: 280px;
     padding-top: 40px;
     padding-bottom: 70px;
-    .main-foto__img {
-      margin-left: 15px;
-      width: 30%;
-      transition: width 300ms ease-in-out;
-      border-radius: 50px;
-      object-fit: contain;
-      cursor: pointer;
+    .foto-wrapp {
       &.full {
-        width: 80% !important;
-        border-radius: 8px;
+        position: fixed;
+        z-index: 6;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom:  0; 
+        border-radius: 0;
+        background-color: rgba(204, 207, 199, 0.96);;
       } 
+
+      .main-foto__img {
+        transition-property: transform, width, border-radius;
+        transition-duration: 300ms;
+        transition-timing-function: ease-in-out;
+        margin-left: 15px;
+        width: 30%;
+        border-radius: 50px;
+        object-fit: contain;
+        &.full-foto {
+          position: fixed;
+          top: 40%;
+          transform: translateY(-50%);
+          width: 85%;
+          border-radius: 8px;
+
+        }
+      }
     }
   }
 
   .about {
     .about-list {
+      padding-bottom: 20px;
       .about-item {
         text-align: center;
         padding: 5px 15px 5px 15px;
         &:not(:last-child) {
           padding-bottom: 30px;
+        }
+      }
+    }
+    .about-wrapp {
+      position: relative;
+      border: 1px solid rgba(204, 207, 199, .96);
+      border-radius: 8px;
+      padding-left: 10px;
+      padding-right: 10px;
+
+      .about-more {
+        display: block;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 20px;
+        padding-left: 20px;
+
+        color:rgba(204, 207, 199, .96);
+        text-align: start;
+      }
+      .about-cotent {
+        // position: absolute;
+        // z-index: 2;
+        // background-color: rgba(204, 207, 199, 0.96);
+        // padding-left: 15px;
+        // padding-right: 15px;
+        // top: 105%;
+        // bottom: 350%;
+        // left: 0;
+        // right: 0;
+        // border-radius: 8px;
+        padding-bottom: 0;
+        padding-right: 20px;
+        font-size: .93em;
+        overflow: scroll;
+        height: 0;
+        padding-right: 15px;
+
+        width: 100%;
+        transition-property: height, padding;
+        transition-timing-function: ease-in-out;
+        transition-duration: 600ms;
+        &.heigth {
+        height: 350px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+
         }
       }
     }
@@ -362,7 +428,7 @@ button:hover {
         }
         img {
           position: absolute;
-          left: 40%;
+          left: 35%;
           margin: auto;
           width: 60px;
           height: 100%;

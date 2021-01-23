@@ -277,17 +277,34 @@ button:hover {
   padding-top: 40px;
   padding-bottom: 70px;
 }
-.main .main-foto .main-foto__img {
+.main .main-foto .foto-wrapp.full {
+  position: fixed;
+  z-index: 6;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 0;
+  background-color: rgba(204, 207, 199, 0.96);
+}
+.main .main-foto .foto-wrapp .main-foto__img {
+  transition-property: transform, width, border-radius;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
   margin-left: 15px;
   width: 30%;
-  transition: width 300ms ease-in-out;
   border-radius: 50px;
   object-fit: contain;
-  cursor: pointer;
 }
-.main .main-foto .main-foto__img.full {
-  width: 80% !important;
+.main .main-foto .foto-wrapp .main-foto__img.full-foto {
+  position: fixed;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 85%;
   border-radius: 8px;
+}
+.main .about .about-list {
+  padding-bottom: 20px;
 }
 .main .about .about-list .about-item {
   text-align: center;
@@ -295,6 +312,39 @@ button:hover {
 }
 .main .about .about-list .about-item:not(:last-child) {
   padding-bottom: 30px;
+}
+.main .about .about-wrapp {
+  position: relative;
+  border: 1px solid rgba(204, 207, 199, 0.96);
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.main .about .about-wrapp .about-more {
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  color: rgba(204, 207, 199, 0.96);
+  text-align: start;
+}
+.main .about .about-wrapp .about-cotent {
+  padding-bottom: 0;
+  padding-right: 20px;
+  font-size: 0.93em;
+  overflow: scroll;
+  height: 0;
+  padding-right: 15px;
+  width: 100%;
+  transition-property: height, padding;
+  transition-timing-function: ease-in-out;
+  transition-duration: 600ms;
+}
+.main .about .about-wrapp .about-cotent.heigth {
+  height: 350px;
+  padding-right: 15px;
+  padding-bottom: 15px;
 }
 .main .skills .skill-list {
   display: grid;
@@ -311,7 +361,7 @@ button:hover {
 }
 .main .skills .skill-list .skill-item img {
   position: absolute;
-  left: 40%;
+  left: 35%;
   margin: auto;
   width: 60px;
   height: 100%;
