@@ -24,13 +24,6 @@ for (let link of links) {
     })
   })
 }
-
-// const skillsTitle = document.querySelector('.nav-skills');
-// skillsTitle.addEventListener('click', () => {
-//   skills.scrollIntoView();
-// })
-
-
 //=============== foto ==========================-------->
 const foto = document.querySelector('.main-foto__img');
 const fotoWrapp = document.querySelector('.foto-wrapp');
@@ -66,7 +59,7 @@ function getCoordsEnd (elem) {
 
 let extraPX = 35;
 
-window.addEventListener('scroll', () => {
+function skillScroll() {
   const skillListYCoordsStart = getCoordsStart(skillList); 
   const skillListYCoordsEnd = getCoordsEnd(skillList); 
   const langStart = getCoordsStart(lang); 
@@ -98,8 +91,22 @@ window.addEventListener('scroll', () => {
   } else {
     lang.classList.remove('lang-effect');
   }
+}
 
-})
+
+function checkMedia768(media) {
+  if (media.matches) {
+    window.removeEventListener('scroll', skillScroll)
+  } else {
+      window.addEventListener('scroll', skillScroll)
+  }
+}
+
+let media768 = window.matchMedia('(min-width: 768px)');
+media768.addListener(checkMedia768);
+checkMedia768(media768);
+
+
 
 //=============== contacts ==========================-------->
 // const contact = document.querySelector('.your-site__link');
