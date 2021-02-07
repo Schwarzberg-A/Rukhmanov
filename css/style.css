@@ -457,6 +457,7 @@ button:hover {
 }
 .main .portfolio .portfolio-list .portfolio-item {
   padding: 7px;
+  min-height: 500px;
   text-align: center;
   border: 1px solid #f1e3e3;
   border-radius: 8px;

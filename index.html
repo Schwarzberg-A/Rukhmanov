@@ -2,6 +2,17 @@
 <html lang="ru">
 
 <head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XNWKT0HQ0T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XNWKT0HQ0T');
+</script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -53,7 +64,7 @@
         </li>
         <li class="header__nav-item">
           <a class="header__nav-link" href="#lang">
-            Languges
+            Languages
           </a>
         </li>
         <li class="header__nav-item">
@@ -115,6 +126,7 @@
         </p>
       </div>
     </section>
+
     <section class="skills" id="skills">
       <h3 class="skills-title">
         Skills
@@ -159,10 +171,9 @@
       </ul>
     </section>
 
-
     <section class="lang" id="lang"> 
       <h3 class="lang-title">
-        Languges
+        Languages
       </h3>
       <ul class="lang-list">
         <li class="lang-item">
@@ -198,13 +209,25 @@
               alt="example of work completion">
             </picture>
           </a>
-
         </li>
-        <li class="portfolio-item your-site">
+        <li class="portfolio-item">
+          <a target="_blank" class="portfolio-link" href="https://www.likede.online/">
+            <picture class="portfolio-picture">
+              <source 
+              srcset="src/img/myworks/dobro.jpg 1x, src/img/myworks/dobro@2x.jpg 2x"
+              width="249px" height="522px">
+              <img 
+              class="portfolio-img" 
+              width="200px" height="522px" 
+              src="src/img/myworks/dobro.jpg" 
+              alt="example of work completion">
+            </picture>
+          </a>
+        </li>
+        <!-- <li class="portfolio-item your-site">
           <a href="#contacts" class="your-site__link">place for your site</a>
-        </li>
+        </li> -->
       </ul>
-      </iframe>
     </section>
 
 
