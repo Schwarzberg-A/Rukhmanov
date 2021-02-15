@@ -870,6 +870,7 @@ a:hover, button:hover {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: repeat(3, minmax(180px, 1fr));
+
         gap: 7px;
         justify-items: center;
         align-items: center;
